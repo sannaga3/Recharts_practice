@@ -8,7 +8,7 @@ import {
   Bar,
 } from "recharts";
 
-export const ComposeChart = () => {
+export const ComposedChart1 = () => {
   const data = [
     {
       userName: "mike",

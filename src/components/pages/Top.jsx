@@ -6,7 +6,7 @@ import {
   PolarRadiusAxis
 } from "recharts";
 
-import { ComposeChart } from '../atoms/chart/ComposeChart'
+import { ComposedChart1 } from '../atoms/chart/ComposedChart'
 import styled from 'styled-components'
 
 export const Top = () => {
@@ -78,10 +78,10 @@ export const Top = () => {
       </SRow>
       <SRow>
         <div style={{ paddingBottom: '20%' }}>
-          <h2>・ComposeChart</h2>
+          <h2>・ComposedChart</h2>
           <p>チャート描画テスト</p>
         </div>
-        <ComposeChart />
+        <ComposedChart1 />
       </SRow>
     </>
   );
