@@ -5,6 +5,8 @@ import {
   PolarAngleAxis,
   PolarRadiusAxis
 } from "recharts";
+
+import { ComposeChart } from '../atoms/chart/ComposeChart'
 import styled from 'styled-components'
 
 export const Top = () => {
@@ -51,7 +53,7 @@ export const Top = () => {
       <h1 style={{ textAlign: 'center' }}>Topページ</h1>
       <SRow>
         <div style={{ paddingBottom: '20%' }}>
-          <h2>・Recharts</h2>
+          <h2>・RadarChart</h2>
           <p>チャート描画テスト</p>
         </div>
         <RadarChart
@@ -73,6 +75,13 @@ export const Top = () => {
             fillOpacity={0.6}
           />
         </RadarChart>
+      </SRow>
+      <SRow>
+        <div style={{ paddingBottom: '20%' }}>
+          <h2>・ComposeChart</h2>
+          <p>チャート描画テスト</p>
+        </div>
+        <ComposeChart />
       </SRow>
     </>
   );
