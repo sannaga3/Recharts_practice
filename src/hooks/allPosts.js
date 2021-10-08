@@ -1,22 +1,29 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 
-export const getPosts = () => {
+export const usePosts = () => {
   const [posts, setPosts] = useState([]);
+  const [postCountList, setPostCountList] = useState([]);
+  const [chartToggle, setChartToggle] = useState(false);
 
-  axios.get('https://jsonplaceholder.typicode.com/posts')
-    .then((res) => {
-      console.log(res.data)
-      const data = res.data.map((post) => ({
-        userId: post.userId,
-        id: post.id,
-        title: post.title,
-        body: post.body
-      }))
-      setPosts(data)
-    })
-    .catch((error) => {
-      alert('error')
-    })
-    return {getPosts};
+  const getPosts = () => {
+    axios.get('https://jsonplaceholder.typicode.com/posts')
+      .then((res) => {
+        setPosts(res.data);
+        const userIds = res.data.map((post) => post.userId)
+        const userIdList = Array.from(new Set(userIds))
+        const userIdCountList = userIdList.map((userId) => [userId, 0])
+        userIds.map((userId) => {
+          if (userIdList.includes(userId)) {
+            userIdCountList[userId - 1][1] += 1
+          }
+        })
+        setPostCountList(userIdCountList)
+        setChartToggle(true)
+      })
+      .catch((error) => {
+        alert(error)
+      })
+    }
+    return { getPosts, posts, postCountList, chartToggle };
 }
